@@ -1,26 +1,19 @@
-# Sobre
+## Sobre
 
-Pretendo seguir o projeto de To-do List.
+Neste repositório contém um projeto de uma ferramenta To-do list básica composta pelo CRUD e adicionada possibilidade de notificações quanto aos estados das tarefas (VENCIDO ou NÃO-VENCIDO). Desenvolvido com **React.JS** no frontend juntamente com o **Spring** no backend, sendo utilizado os componentes do Bootstrap, provendo responsividade a tela.
 
-Poderei colocar um prazo para o to-do list
-
-Uma to-do list terá 
-
-**** TAREFA ****
-título
-descrição
-autor
-data-limite
-
-informar quais to-do list podem vencer
-
-react.JS + Spring (Kotlin)
-
-*Com os componentes do bootstrap
+Além disso, as tarefas podem ter data de prazo, sendo realizado notificações quantos 
 
 
-*** Projeto individual - To-do list
+## Características
+    React Google Charts é uma boa opção caso deseje gerar  
 
-Descrição: Evolução do to-do list. Permite o CRUD do todo-list. Além disso, as tarefas podem ter data de prazo, sendo realizado notificações quantos aos estados das tarefas (VENCIDO, ou NÃO-VENCIDO). 
 
-Os componentes usados serão do Bootstrap, provendo responsividade. Será utilizado o React.JS no frontend juntamente com o Spring no backend.
+### TAREFA 
+```
+ título: string
+ descrição: string
+ autor: string
+ data-prazo: date
+ estado: string
+```
