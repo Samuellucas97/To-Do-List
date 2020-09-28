@@ -1,5 +1,6 @@
 package com.example.springbootprojectkotlin.model
 
+import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -17,4 +18,16 @@ data class Task (
 ) {
     @Id
     var id: Long? = null
+
+    var createdAt: LocalDateTime? = null
+    var updatedAt: LocalDateTime? = null
+
+    fun create() : Unit {
+        createdAt = LocalDateTime.now()
+        updatedAt = createdAt
+    }
+
+    fun update() : Unit {
+       updatedAt = LocalDateTime.now()
+    }
 }
