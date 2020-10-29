@@ -1,6 +1,12 @@
-## Sobre
+## Introdução
 
 Neste repositório contém um projeto de uma ferramenta To-do list básica composta pelo CRUD e adicionada possibilidade de notificações quanto aos estados das tarefas (VENCIDO ou NÃO-VENCIDO). As tarefas podem ter data de prazo para auxiliar na verificação quanto ao estado. O projeto foi desenvolvido com **React.JS** no frontend juntamente com o **Spring** no backend.
+
+
+- [Requisitos](#requisitos) - Requisitos para uso do projeto
+- [Como instalar e executar](#como-instalar-e-executar) - Informações sobre como instalar e executar
+
+
 
 ## Requisitos
 
@@ -32,12 +38,13 @@ Com isso, a aplicação frontend executada na porta 3000. E será aberto o naveg
 
 O banco de dados adotado é o **MySQL**. Porém o serviço do banco de dados será feito através de um container Docker. 
 
-Obs.: As informações do MySQL usadas são `database`: **todolisttest**, `username`: **root** e `password`: **root**.
-
 ```
 $ cd backend-todolist
 $ docker-compose up -d
 ```
+
+
+  - ***Obs.:*** As informações do MySQL usadas são `database`: **todolisttest**, `username`: **root** e `password`: **root**.
 
 Em seguida, execute o seguinte comando:
 
