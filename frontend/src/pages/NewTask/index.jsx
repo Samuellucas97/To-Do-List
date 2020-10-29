@@ -12,13 +12,21 @@ const NewTask = () => {
         const data = {
             "title": title,
             "description": description,
-            "beginDate": "2020-10-20",
-            "endDate": "2020-11-22"
+            "beginDate": null,
+            "endDate": null
         };
 
-        try {
-            console.log(data);
-            await api.post('tasks', data);
+        try {    
+            await api.post('tasks', data, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+            })
+            .then(response => {
+                console.log(response.data);
+            })
 
         } catch (err) {
             alert('Erro ao cadastrar. Tente novamente');

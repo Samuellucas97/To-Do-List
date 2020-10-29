@@ -34,18 +34,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-//        http.cors();
+        http.cors();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/users/signin").permitAll()
-                .antMatchers(HttpMethod.POST, "/users/signup").permitAll()
-                .antMatchers("/tasks/*").permitAll()
+//                .antMatchers(HttpMethod.POST, "/users/signin").permitAll()
+//                .antMatchers(HttpMethod.POST, "/users/signup").permitAll()
+                .antMatchers("/*").permitAll();
 
-                .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs", "/webjars/**").permitAll()
-                .anyRequest()
-                .authenticated();
+//                .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs", "/webjars/**").permitAll()
+//                .anyRequest()
+//                .authenticated();
 
 
         http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
@@ -71,18 +71,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-//
-//    @Bean
-//    public CorsConfigurationSource corsConfiguration() {
-//        CorsConfiguration corsConfig = new CorsConfiguration();
-//        corsConfig.applyPermitDefaultValues();
-//        corsConfig.addAllowedMethod(HttpMethod.PUT);
-//        corsConfig.addAllowedMethod(HttpMethod.DELETE);
-//        corsConfig.setAllowedOrigins(Arrays.asList("*"));
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", corsConfig);
-//        return source;
-//    }
 
-
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.setAllowedOrigins(Arrays.asList("*"));
+        corsConfig.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS", "DELETE", "PUT"));
+        corsConfig.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+        return source;
+    }
 }

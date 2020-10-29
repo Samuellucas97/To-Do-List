@@ -18,7 +18,7 @@ const Register = () => {
         };
 
         try {
-            const response = await api.post('new-user', data);    
+            const response = await api.post('signup', data);    
         } catch (err) {
             alert('Erro no cadastro, tente novamente');
         }

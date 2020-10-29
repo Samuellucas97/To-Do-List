@@ -6,11 +6,11 @@ const SchedulerTask = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => { 
-        api.get('tasks-scheduler')
+        api.get('tasks/scheduler')
         .then(response => {
             setTasks(response.data);
         })
-    });
+    }, []);
 
     return (
         <div>

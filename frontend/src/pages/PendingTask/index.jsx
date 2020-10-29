@@ -6,11 +6,11 @@ const PendingTask = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => { 
-        api.get('tasks-pending')
+        api.get('tasks/pending')
         .then(response => {
             setTasks(response.data);
         })
-    });
+    }, []);
 
 
     return (

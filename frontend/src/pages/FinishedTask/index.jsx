@@ -6,11 +6,11 @@ const FinishedTask = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => { 
-        api.get('tasks-finished')
+        api.get('tasks/concluded')
         .then(response => {
             setTasks(response.data);
         })
-    });
+    }, []);
 
     return (
         <div>
