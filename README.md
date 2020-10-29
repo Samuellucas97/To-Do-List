@@ -39,6 +39,7 @@ Com isso, a aplicação frontend executada na porta 3000. E será aberto o naveg
 O banco de dados adotado é o **MySQL**. Porém o serviço do banco de dados será feito através de um container Docker. 
 
 ```
+$ cd ..
 $ cd backend-todolist
 $ docker-compose up -d
 ```
