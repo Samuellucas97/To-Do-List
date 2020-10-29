@@ -5,7 +5,7 @@ Neste repositório contém um projeto de uma ferramenta To-do list básica compo
 
 - [Requisitos](#requisitos) - Requisitos para uso do projeto
 - [Como instalar e executar](#como-instalar-e-executar) - Informações sobre como instalar e executar
-
+- [Funcionalidades](#funcionalidades) - Funcionalidades do projeto
 
 
 ## Requisitos
@@ -54,3 +54,13 @@ $ yarn start
 ```
 Com isso, a aplicação frontend executada na porta 3000. E será aberto o navegador em [http://localhost:3000](http://localhost:3000).
 
+
+## Funcionalidades
+
+Atualmente, a autenticação e a autorização não foi concluída no backend. E, no frontend não foi terminada a estilização da página. Está havendo um problema no frontend com o uso do POST do endpoint `/task`, assim só é possível realizar o GET.
+
+
+
+- Acesse a página [http://localhost:3000/profile](http://localhost:3000/profile) que é a parte de interface onde o usuário pode ir para as demais páginas.
+
+ 
