@@ -4,8 +4,9 @@ Neste repositório contém um projeto de uma ferramenta To-do list básica compo
 
 ## Requisitos
 
+- NodeJS
 - Yarn
-- Java
+- Java (_versão 11_)
 - Docker (_opcional_)
 - Docker Compose (_opcional_)
 
@@ -29,7 +30,9 @@ Com isso, a aplicação frontend executada na porta 3000. E será aberto o naveg
 
 ### Backend
 
-O banco de dados adotado é o **MySQL**. Porém o serviço do banco de dados será feito através de um container Docker.
+O banco de dados adotado é o **MySQL**. Porém o serviço do banco de dados será feito através de um container Docker. 
+
+Obs.: As informações do MySQL usadas são `database`: **todolisttest**, `username`: **root** e `password`: **root**.
 
 ```
 $ cd backend-todolist
