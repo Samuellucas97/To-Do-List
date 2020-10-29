@@ -23,25 +23,13 @@ Inicialmente, faça clonagem do repositório para a máquina local.
 $ git clone git@github.com:Samuellucas97/To-Do-List.git
 ```
 
-### Frontend
-
-Execute os seguintes comandos:
-
-```
-$ cd frontend
-$ yarn install
-$ yarn start
-```
-Com isso, a aplicação frontend executada na porta 3000. E será aberto o navegador em [http://localhost:3000](http://localhost:3000).
-
 ### Backend
 
 O banco de dados adotado é o **MySQL**. Porém o serviço do banco de dados será feito através de um container Docker. 
 
 ```
-$ cd ..
 $ cd backend-todolist
-$ docker-compose up -d
+$ docker-compose up -d         ## Criando container
 ```
 
 
@@ -54,3 +42,15 @@ $ mvn clean spring-boot:run
 ```
 
 Com isso, a aplicação backend será executada na porta 8080.
+
+### Frontend
+
+Em outra aba, execute os seguintes comandos:
+
+```
+$ cd frontend               ## Execute dentro da pasta raiz do repositório
+$ yarn install              ## Instalando dependências
+$ yarn start
+```
+Com isso, a aplicação frontend executada na porta 3000. E será aberto o navegador em [http://localhost:3000](http://localhost:3000).
+
