@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    container_name: mysql_todolist
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todolisttest
+    ports:
+      - "3306:3306"
+    volumes:
+      - todolist_db:/var/lib/mysql
+volumes:
+  todolist_db:
