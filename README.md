@@ -1,6 +1,6 @@
 ## Introdução
 
-Neste repositório contém um projeto de uma ferramenta To-do list básica composta pelo CRUD e adicionada possibilidade de notificações quanto aos estados das tarefas (VENCIDO ou NÃO-VENCIDO). As tarefas podem ter data de prazo para auxiliar na verificação quanto ao estado. O projeto foi desenvolvido com **React.JS** no frontend juntamente com o **Spring** no backend.
+Neste repositório contém um projeto de uma ferramenta To-do list básica composta pelo CRUD e adicionada possibilidade de notificações quanto aos estados das tarefas. As tarefas podem ter data de prazo para auxiliar na verificação quanto ao estado. O projeto foi desenvolvido com **React.JS** no frontend juntamente com o **Spring** no backend.
 
 
 - [Requisitos](#requisitos) - Requisitos para uso do projeto
