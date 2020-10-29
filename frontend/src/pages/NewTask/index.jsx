@@ -10,11 +10,14 @@ const NewTask = () => {
         e.preventDefault();
 
         const data = {
-            title,
-            description
+            "title": title,
+            "description": description,
+            "beginDate": "2020-10-20",
+            "endDate": "2020-11-22"
         };
 
         try {
+            console.log(data);
             await api.post('tasks', data);
 
         } catch (err) {
