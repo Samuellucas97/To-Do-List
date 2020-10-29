@@ -3,6 +3,7 @@ package br.imd.backendtodolist.controller;
 import br.imd.backendtodolist.model.Role;
 import br.imd.backendtodolist.model.UserCustom;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 

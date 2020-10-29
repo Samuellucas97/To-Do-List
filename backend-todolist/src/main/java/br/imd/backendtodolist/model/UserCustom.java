@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Users")
 public class UserCustom extends CreatedUpdatedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
