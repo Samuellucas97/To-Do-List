@@ -1,9 +1,24 @@
-import { Card, CardComponent } from './Card'
+import { Card, CardContent } from './Card'
 import Button from './Button'
-
+import Typography from './Typography'
+import Container from './Container'
+import Grid from './Grid'
+import Select from './Select'
+import MenuItem from './MenuItem'
+import Avatar from './Avatar'
+import TextField from './TextField'
+import FeaturedTask from './FeaturedTask'
 
 export {
-    Button,
     Card,
-    CardComponent
+    CardContent,
+    Button,
+    Typography,
+    Container,
+    Grid,
+    Select,
+    MenuItem,
+    Avatar,
+    TextField,
+    FeaturedTask
 }

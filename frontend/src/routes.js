@@ -1,28 +1,22 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyles'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Profile from './pages/Profile/index'
-import FinishedTask from './pages/FinishedTask/index'
-import Logon from './pages/Logon/index'
-import NewTask from './pages/NewTask/index'
-import Notifications from './pages/Notifications/index'
-import PendingTask from './pages/PendingTask/index'
+import Home from './pages/Home/index'
+import Login from './pages/Login/index'
 import Register from './pages/Register/index'
-import ScheduledTask from './pages/ScheduledTask/index'
+import Profile from './pages/Profile/index'
 
 const Routes = () => (
     <BrowserRouter>
         <>
+        <CssBaseline />
         <Switch>
-            <Route path="/" exact component={Logon}/>
+            <Route path="/" exact component={Home}/>
+            <Route path="/login" exact component={Login}/>
             <Route path="/register" exact component={Register}/>
             <Route path="/profile" exact component={Profile}/>
-            <Route path="/tasks/new" exact component={NewTask}/>
-            <Route path="/tasks/pendings" exact component={PendingTask}/>
-            <Route path="/tasks/finisheds" exact component={FinishedTask}/>
-            <Route path="/tasks/scheduleds" exact component={ScheduledTask}/>
-            <Route path="/notifications" exact component={Notifications}/>
         </Switch>
         <GlobalStyle />
         </>        

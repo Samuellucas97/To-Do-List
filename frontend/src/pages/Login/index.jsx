@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Container, TextField }  from '../../components/index'
 
 import {
@@ -7,19 +7,17 @@ import {
     DivStyled,
     AvatarStyled, 
     TitleStyled,
-    SubmitButtonStyled } from './style'
+    SubmitButtonStyled, 
+    ButtonRegisterStyled } from './style'
 
-export default function Register() {
-    const [name, setName] = useState('')
+export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [copassword, setCopassword] = useState('')
 
-    async function handleRegister(e) {
+    async function handleLogin(e) {
         e.preventDefault();
 
         const data = {
-            name,
             email,
             password
         }
@@ -27,32 +25,18 @@ export default function Register() {
         console.log(data)
     }
 
+
     return (
         <Container component="main" maxWidth="xs">
             <DivStyled>
                 <AvatarStyled>
-                    <PersonAddOutlinedIcon fontSize="large" />
+                    <LockOutlinedIcon fontSize="large" />
                 </AvatarStyled>
                 <TitleStyled component="h1" variant="h5">
-                    Registrar-se
+                    Efetuar acesso
                 </TitleStyled>
 
-                <FormStyled onSubmit={handleRegister}>
-                    <TextField
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        color="secondary"
-                        id="name"
-                        label="Nome completo"
-                        name="name"
-                        autoComplete="name"
-                        autoFocus
-                    />
-                    
+                <FormStyled onSubmit={handleLogin}>
                     <TextField
                         value={email}
                         onChange={e => setEmail(e.target.value)}
@@ -79,27 +63,9 @@ export default function Register() {
                         name="password"
                         label="Senha"
                         type="password"
-                        id="password"
                         inputProps={{
                             minLength: 8
-                          }}
-                        autoComplete="current-password"
-                    />
-
-                    <TextField
-                        value={copassword}
-                        onChange={e => setCopassword(e.target.value)}
-                        variant="outlined"
-                        margin="normal"
-                        color="secondary"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Repetir senha"
-                        inputProps={{
-                            minLength: 8
-                          }}
-                        type="password"
+                        }}
                         id="password"
                         autoComplete="current-password"
                     />
@@ -111,6 +77,9 @@ export default function Register() {
                     >
                         Confirmar
                     </SubmitButtonStyled>
+                    <ButtonRegisterStyled to="/register">
+                        Ainda não fez cadastro? Registrar-se
+                    </ButtonRegisterStyled>
                 </FormStyled>
             </DivStyled>
         </Container>
