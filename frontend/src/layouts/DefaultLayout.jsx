@@ -1,7 +1,11 @@
+import HeaderCustom from '../components/HeaderCustom'
+
 export default function DefaultLayout (props) {
     return (
         <div>
-            {props.children}
+            <HeaderCustom >
+                {props.children}    
+            </HeaderCustom>
         </div>
     )
 }

@@ -9,6 +9,8 @@ import Avatar from './Avatar'
 import TextField from './TextField'
 import FeaturedTask from './FeaturedTask'
 
+import CardCustom from './CardCustom'
+
 export {
     Card,
     CardContent,
@@ -20,5 +22,6 @@ export {
     MenuItem,
     Avatar,
     TextField,
-    FeaturedTask
+    FeaturedTask,
+    CardCustom
 }

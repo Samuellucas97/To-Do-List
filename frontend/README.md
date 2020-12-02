@@ -1,4 +1,4 @@
-## Scripts disponíveis
+## Comandos disponíveis
 
 No diretório `frontend`, você pode executar:
 

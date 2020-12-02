@@ -1,121 +1,132 @@
-import { Grid, FeaturedTask } from '../../../components/index'
 
-const featuredPosts = [
+import DefaultLayout from '../../layouts/DefaultLayout'
+import { Grid, CardCustom } from '../../components/index'
+import { TitleStyled } from './style'
+
+const tasks = [
     {
+      id: 0,
       title: 'Featured post',
-      date: 'Nov 12',
+      finishDate: 'Nov 12',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 1,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 2,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
+        '',
     },
     {
+      id: 3,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 4,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 5,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 6,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 7,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 8,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 9,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 10,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 11,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
     },
     {
+      id: 12,
       title: 'Post title',
-      date: 'Nov 11',
+      finishDate: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
-      image: 'https://source.unsplash.com/random',
-      imageText: 'Image Text',
+    },
+    {
+      id: 13,
+      title: 'Post title',
+      finishDate: 'Nov 11',
+      description:
+        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    },
+    {
+      id: 14,
+      title: 'Post title',
+      finishDate: 'Nov 11',
+      description:
+        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    },
+    {
+      id: 15,
+      title: 'Post title',
+      finishDate: 'Nov 11',
+      description:
+        'This is a wider card with supporting text below as a natural lead-in to additional content.',
     },
   ];
 
-export default function PendingsTasks() {
+export default function ScheduledsTasks() {
     return ( 
-        <div>
-        
+        <DefaultLayout> 
+            <TitleStyled>Tarefas agendadas</TitleStyled>
             <Grid container  style={{justifyContent: 'space-around'}} >
-                {featuredPosts.map((post) => (
-                <FeaturedTask key={post.title}  post={post} />
+                {tasks.map(task =>(
+                  <CardCustom key={task.id}  task={task} />                
                 ))}
             </Grid>
-        </div>
+        </DefaultLayout>
     )
 }

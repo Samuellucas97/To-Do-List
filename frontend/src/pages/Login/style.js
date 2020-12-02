@@ -27,5 +27,5 @@ margin: 20px 0px;
 `
 export const ButtonRegisterStyled = styled(Link)`
 font-size: 17px;
-color: #90caf9;
+color: #347396;
 `

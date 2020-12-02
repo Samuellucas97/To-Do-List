@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 // import CardMedia from '@material-ui/core/CardMedia';
 // import Hidden from '@material-ui/core/Hidden';
@@ -12,11 +12,11 @@ import CardContent from '@material-ui/core/CardContent';
 const useStyles = makeStyles({
   card: {
     display: 'flex',
-    marginTop: 20,
-    // marginLeft: 30,
-    // marginRight: 30,
+    marginTop: 60,
+    marginLeft: 20,
+    marginRight: 20,
 
-    width: 250,
+    width: 260,
   },
   cardDetails: {
     flex: 1,
@@ -32,7 +32,8 @@ export default function FeaturedPost(props) {
 
   return (
     <Grid item  >
-      <CardActionArea component="a" href="#">
+      {/* <CardActionArea component="a" href="#"> */}
+        
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
@@ -51,7 +52,7 @@ export default function FeaturedPost(props) {
             </CardContent>
           </div>
         </Card>
-      </CardActionArea>
+      {/* </CardActionArea> */}
     </Grid>
   );
 }

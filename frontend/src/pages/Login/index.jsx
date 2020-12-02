@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Container, TextField }  from '../../components/index'
 
@@ -10,9 +11,13 @@ import {
     SubmitButtonStyled, 
     ButtonRegisterStyled } from './style'
 
+import Paper from '@material-ui/core/Paper';
+
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const history = useHistory();
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -23,11 +28,14 @@ export default function Login() {
         }
 
         console.log(data)
+
+        history.push('/home');
     }
 
 
     return (
         <Container component="main" maxWidth="xs">
+            <Paper elevation={3} style={{ paddingLeft: 16, paddingRight: 16, paddingBottom: 20 }}>    
             <DivStyled>
                 <AvatarStyled>
                     <LockOutlinedIcon fontSize="large" />
@@ -82,6 +90,7 @@ export default function Login() {
                     </ButtonRegisterStyled>
                 </FormStyled>
             </DivStyled>
+            </Paper>
         </Container>
   );
 }

@@ -16,7 +16,7 @@ a, li, button {
 } 
 
 input {
-    color: white !important;
+    /* color: white !important; */
 }
 `
 

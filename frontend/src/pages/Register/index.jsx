@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
 import { Container, TextField }  from '../../components/index'
 
@@ -9,11 +10,15 @@ import {
     TitleStyled,
     SubmitButtonStyled } from './style'
 
+import Paper from '@material-ui/core/Paper';
+
 export default function Register() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [copassword, setCopassword] = useState('')
+
+    const history = useHistory();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -25,10 +30,14 @@ export default function Register() {
         }
 
         console.log(data)
+
+
+        history.push('/login');
     }
 
     return (
         <Container component="main" maxWidth="xs">
+            <Paper elevation={3} style={{ paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }}>    
             <DivStyled>
                 <AvatarStyled>
                     <PersonAddOutlinedIcon fontSize="large" />
@@ -66,7 +75,6 @@ export default function Register() {
                         name="email"
                         autoComplete="email"
                         type="email"
-                        autoFocus
                     />
                     <TextField
                         value={password}
@@ -113,6 +121,7 @@ export default function Register() {
                     </SubmitButtonStyled>
                 </FormStyled>
             </DivStyled>
+            </Paper>
         </Container>
   );
 }

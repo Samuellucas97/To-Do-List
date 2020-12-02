@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button , Typography, Avatar}  from '../../../components/index'
+import { Button , Typography, Avatar}  from '../../components/index'
 import { Link } from 'react-router-dom'
 
 export const FormStyled = styled.form `

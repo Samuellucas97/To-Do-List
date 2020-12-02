@@ -1,43 +1,119 @@
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import { useState } from 'react'
 
-import MyDatas from '../components/MyDatas/index'
-import FinishedsTask from '../components/FinishedsTask/index'
-import PendingsTask from '../components/PendingsTask/index'
-import ScheduledsTask from '../components/ScheduledsTask/index'
-import NewTask  from '../components/NewTask/index'
+import DefaultLayout from  '../../layouts/DefaultLayout'
+import PersonIcon from '@material-ui/icons/Person'
+import { Container, TextField }  from '../../components/index'
 
-import Header from '../../components/Header'
+import {
+    FormStyled,
+    DivStyled,
+    AvatarStyled, 
+    TitleStyled,
+    SubmitButtonStyled } from './style'
 
+import Paper from '@material-ui/core/Paper';
 
-const sections = [
-    { title: 'Pendentes', url: '/tasks/pendings' },
-    { title: 'Agendadas', url: '/tasks/scheduleds' },
-    { title: 'Finalizadas', url: '/tasks/finisheds' }
-];
+export default function MyDatas() {
+    const [name, setName] = useState('Samuel Lucas de Moura Ferino')
+    const [email, setEmail] = useState('samuel1797@gmail.com')
+    const [password, setPassword] = useState('muka123')
+    const [copassword, setCopassword] = useState('muka123')
 
+    async function handleUpdateMyDatas(e) {
+        e.preventDefault();
 
-export default function Profile() {
+        const data = {
+            name,
+            email,
+            password
+        }
+
+        console.log(data)
+    }
+
     return (
-        <Router>
-            <Header title="Tarefas" sections={sections} />
-            <Switch>
-                <Route path="/profile" >                
-                    <MyDatas />
-                </Route> 
-                <Route path="/tasks/new" >
-                    <NewTask />
-                </Route> 
-                <Route path="/tasks/pendings" >
-                    <PendingsTask />
-                </Route>
-                <Route path="/tasks/finisheds" >
-                    <FinishedsTask />
-                </Route>
-                <Route path="/tasks/scheduleds" >
-                    <ScheduledsTask />
-                </Route>
-            </Switch> 
-        </Router>
-      
+        <DefaultLayout>
+           <Container component="main" maxWidth="xs">
+                
+                <Paper elevation={3} style={{ paddingLeft: 16, paddingRight: 16 }}>    
+                <DivStyled>
+                    <AvatarStyled>
+                        <PersonIcon fontSize="large" />
+                    </AvatarStyled>
+                    <TitleStyled component="h1" variant="h5">
+                        Meus dados
+                    </TitleStyled>
+
+                    <FormStyled  onSubmit={handleUpdateMyDatas}>
+                        <TextField
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            color="secondary"
+                            id="name"
+                            label="Nome completo"
+                            name="name"
+                            autoComplete="name"
+                            autoFocus
+                        />
+
+                        <TextField
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            color="secondary"
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
+                        />
+                        <TextField
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            color="secondary"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Senha"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+
+                        <TextField
+                            value={copassword}
+                            onChange={e => setCopassword(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            color="secondary"
+                            required
+                            fullWidth
+                            name="copassword"
+                            label="Repetir senha"
+                            type="password"
+                            id="copassword"
+                            autoComplete="current-copassword"
+                        />
+                        <SubmitButtonStyled
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Atualizar
+                        </SubmitButtonStyled>
+                    </FormStyled>
+                </DivStyled>
+                </Paper>
+            </Container>
+        </DefaultLayout>
     )
 }

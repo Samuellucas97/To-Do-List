@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '25px'
   },
   toolbarLink: {
+    fontSize: '19px',
     padding: theme.spacing(1),
     flexShrink: 0,
   },
@@ -37,7 +38,7 @@ export default function Header(props) {
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
 
-      <Button variant="contained" component={RouterLink} to={'/profile'} size="small">Meus dados</Button>
+      <Button variant="contained" component={RouterLink} to={'/profile'} size="small">Perfil</Button>
         <Typography
           component="h2"
           variant="h5"

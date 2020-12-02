@@ -27,7 +27,6 @@ const styles = theme => ({
   cssFocused: {},
 
   notchedOutline: {
-    borderWidth: "1px",
     borderColor: "white !important"
   }
 });
