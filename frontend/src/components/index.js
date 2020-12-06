@@ -1,9 +1,8 @@
-import { Card, CardComponent } from './Card'
-import Button from './Button'
+// import { Card } from './Card'
+// import ButtonM from './Button'
 
 
-export {
-    Button,
-    Card,
-    CardComponent
-}
+// export default {
+//     ButtonM,
+//     Card
+// }

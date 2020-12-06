@@ -1,0 +1,8 @@
+
+.my_container {
+min-height: 100vh;
+display: block;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}

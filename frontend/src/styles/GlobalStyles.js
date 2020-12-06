@@ -11,7 +11,8 @@ const globalStyle = createGlobalStyle `
 }
 
 body {
-    background: #f0f0f5;
+    background-color: #302a26;
+    color:#ecd1b3 !important;
     line-height: normal;
     font: 400 14px Roboto, sans-serif;
     -webkit-font-smooting: antialiased;
@@ -21,6 +22,10 @@ html, body {
     width: 100%;
     min-height: 100%;
     display: flex;
+}
+
+a, li, button {
+    text-decoration: none;
 }
 `
 

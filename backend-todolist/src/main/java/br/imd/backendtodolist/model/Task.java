@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-public class Task extends CreatedUpdatedEntity {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +23,7 @@ public class Task extends CreatedUpdatedEntity {
     private LocalDate endDate = null;
     private Boolean isConcluded = Boolean.FALSE;
     private LocalDate updated = null;
+
+    @OneToOne
+    private UserCustom userCustom;
 }
