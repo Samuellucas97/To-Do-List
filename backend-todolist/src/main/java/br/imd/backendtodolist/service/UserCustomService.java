@@ -1,5 +1,6 @@
 package br.imd.backendtodolist.service;
 
+import br.imd.backendtodolist.exception.ResourceNotFoundException;
 import br.imd.backendtodolist.model.Task;
 import br.imd.backendtodolist.model.UserCustom;
 import br.imd.backendtodolist.repository.UserCustomRepository;
@@ -23,6 +24,11 @@ public class UserCustomService implements UserDetailsService {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
         userCustom.setPassword(bCryptPasswordEncoder.encode(userCustom.getPassword()) );
         return userCustomRepository.save(userCustom);
+    }
+
+    public UserCustom findById(Long idUserCustom) {
+        return userCustomRepository.findById(idUserCustom)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
     }
 
     @Override
