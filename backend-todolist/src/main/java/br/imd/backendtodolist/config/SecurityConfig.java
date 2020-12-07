@@ -3,6 +3,7 @@ package br.imd.backendtodolist.config;
 import br.imd.backendtodolist.security.JwtTokenVerifier;
 import br.imd.backendtodolist.security.JwtUsernameAndPasswordAuthenticationFilter;
 import br.imd.backendtodolist.service.UserCustomService;
+import com.google.common.collect.ImmutableList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -65,6 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.applyPermitDefaultValues();
         corsConfig.setAllowCredentials(true);
+        corsConfig.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
+        corsConfig.setExposedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
         corsConfig.setAllowedMethods(Collections.singletonList("*"));
         corsConfig.setAllowedOrigins(Collections.singletonList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

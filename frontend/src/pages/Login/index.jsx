@@ -30,13 +30,13 @@ export default function Login() {
             "password": password
         }
         try {
-            console.log(data)
-            const response = await api.post('sign-in', data);
+            let response = await api.post('sign-in', data);
 
-            console.log(response)    
-			//login(response.data.token);
+           login(response.headers.authorization);
             
-            //history.push('/home');
+            response = await api.get(`/users/${email}`);
+            
+            history.push('/home');
         } catch (err) {
             alert('Erro no cadastro, tente novamente');
         }
