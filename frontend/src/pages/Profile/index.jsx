@@ -1,24 +1,119 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { ContainerStyled, RowStyled } from './style'
+import { useState } from 'react'
 
+import DefaultLayout from  '../../layouts/DefaultLayout'
+import PersonIcon from '@material-ui/icons/Person'
+import { Container, TextField }  from '../../components/index'
 
-const Profile = () => {
+import {
+    FormStyled,
+    DivStyled,
+    AvatarStyled, 
+    TitleStyled,
+    SubmitButtonStyled } from './style'
+
+import Paper from '@material-ui/core/Paper';
+
+export default function MyDatas() {
+    const [name, setName] = useState('Samuel Lucas de Moura Ferino')
+    const [email, setEmail] = useState('samuel1797@gmail.com')
+    const [password, setPassword] = useState('muka123')
+    const [copassword, setCopassword] = useState('muka123')
+
+    async function handleUpdateMyDatas(e) {
+        e.preventDefault();
+
+        const data = {
+            name,
+            email,
+            password
+        }
+
+        console.log(data)
+    }
+
     return (
-        <ContainerStyled>
-            <RowStyled>
-                <h2>Usuário</h2>
-            </RowStyled>
-            <RowStyled>
-                <h2>Tarefas</h2>
-                <Link className="button" to="/tasks/new">Cadastrar tarefa</Link>
-                <Link className="button" to="/tasks/finished">Ver tarefas concluídas</Link>
-                <Link className="button" to="/tasks/pending">Ver tarefas pendentes</Link>
-                <Link className="button" to="/tasks/scheduler">Ver tarefas agendadas</Link>
+        <DefaultLayout>
+           <Container component="main" maxWidth="xs">
+                
+                <Paper elevation={3} style={{ paddingLeft: 16, paddingRight: 16 }}>    
+                <DivStyled>
+                    <AvatarStyled>
+                        <PersonIcon fontSize="large" />
+                    </AvatarStyled>
+                    <TitleStyled component="h1" variant="h5">
+                        Meus dados
+                    </TitleStyled>
 
-            </RowStyled>
-        </ContainerStyled>
+                    <FormStyled  onSubmit={handleUpdateMyDatas}>
+                        <TextField
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            color="secondary"
+                            id="name"
+                            label="Nome completo"
+                            name="name"
+                            autoComplete="name"
+                            autoFocus
+                        />
+
+                        <TextField
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            color="secondary"
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
+                        />
+                        <TextField
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            color="secondary"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Senha"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+
+                        <TextField
+                            value={copassword}
+                            onChange={e => setCopassword(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            color="secondary"
+                            required
+                            fullWidth
+                            name="copassword"
+                            label="Repetir senha"
+                            type="password"
+                            id="copassword"
+                            autoComplete="current-copassword"
+                        />
+                        <SubmitButtonStyled
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Atualizar
+                        </SubmitButtonStyled>
+                    </FormStyled>
+                </DivStyled>
+                </Paper>
+            </Container>
+        </DefaultLayout>
     )
 }
-
-export default Profile;

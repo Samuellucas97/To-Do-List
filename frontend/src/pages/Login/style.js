@@ -8,7 +8,7 @@ margin-top: 10px;
 `
 
 export const DivStyled = styled.div `
-margin-top: 30px;
+margin-top: 120px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -27,5 +27,5 @@ margin: 20px 0px;
 `
 export const ButtonRegisterStyled = styled(Link)`
 font-size: 17px;
-color: #90caf9;
+color: #347396;
 `

@@ -1,56 +1,100 @@
-import React, { useState }  from 'react'
+import { useState } from 'react'
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
+import { Container, TextField }  from '../../components/index'
 
-import api from '../../services/api'
+import DefaultLayout from '../../layouts/DefaultLayout'
 
-const NewTask = () => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+
+import Paper from '@material-ui/core/Paper';
+
+import {
+    FormStyled,
+    DivStyled,
+    AvatarStyled, 
+    TitleStyled,
+    SubmitButtonStyled } from './style'
+
+export default function NewTask() {
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    // const [selectedStartDate, setSelectedStartDate] = useState(new Date())
+    // const [selectedFinishDate, setSelectFinishDate] = useState(new Date())  
+
 
     async function handleNewTask(e) {
         e.preventDefault();
 
         const data = {
-            "title": title,
-            "description": description,
-            "beginDate": null,
-            "endDate": null
-        };
-
-        try {    
-            await api.post('tasks', data, {
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'same-origin',
-            })
-            .then(response => {
-                console.log(response.data);
-            })
-
-        } catch (err) {
-            alert('Erro ao cadastrar. Tente novamente');
+            title,
+            description
         }
+
+        console.log(data)
     }
 
 
     return (
-        <div>
-            <form onSubmit={handleNewTask}>
-                <input 
-                    placeholder="Título da tarefa" 
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                />
-                <textarea 
-                    placeholder="Descrição"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)} 
-                />
-                <button type="submit">Cadastrar</button>
-            </form>
-        </div>
-    )
-}
 
-export default NewTask;
+        <DefaultLayout>
+            <Container component="main" maxWidth="md">
+                <Paper elevation={3} style={{ paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }}>    
+            
+                <DivStyled>
+                    <AvatarStyled>
+                        <AddOutlinedIcon fontSize="large" />
+                    </AvatarStyled>
+                    <TitleStyled component="h1" variant="h5">
+                        Cadastrar tarefa
+                    </TitleStyled>
+
+                    
+                    <FormStyled onSubmit={handleNewTask}>
+                        <TextField
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            color="secondary"
+                            id="title"
+                            label="Título"
+                            name="title"
+                            autoComplete="title"
+                            autoFocus
+                        />
+
+                        <TextField
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            color="secondary"
+                            required
+                            fullWidth
+                            multiline
+                            rows={10}
+                            rowsMax={10} 
+                            name="description"
+                            label="Descrição"
+                            type="text"
+                            id="description"
+
+                    
+                            autoComplete="description"
+                        />
+                        <SubmitButtonStyled
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Confirmar
+                        </SubmitButtonStyled>
+                    </FormStyled>
+                </DivStyled>
+                </Paper>
+            </Container>
+        </DefaultLayout>
+    );
+}

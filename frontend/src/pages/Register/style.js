@@ -8,7 +8,7 @@ margin-top: 10px;
 `
 
 export const DivStyled = styled.div `
-margin-top: 30px;
+margin-top: 120px;
 display: flex;
 flex-direction: column;
 align-items: center;
