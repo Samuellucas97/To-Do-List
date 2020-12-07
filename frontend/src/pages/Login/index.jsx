@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Container, TextField }  from '../../components/index'
 
+import api from '../../services/api'
+
 import {
     FormStyled,
     DivStyled,
@@ -23,13 +25,23 @@ export default function Login() {
         e.preventDefault();
 
         const data = {
-            email,
-            password
+            "username": email,
+            "password": password
+        }
+        try {
+            console.log(data)
+            const response = await api.post('sign-in', data);
+
+            console.log(response)    
+
+            // localStorage.setItem('ongId', id);
+            // localStorage.setItem('ongName', response.data.name);
+
+            history.push('/home');
+        } catch (err) {
+            alert('Erro no cadastro, tente novamente');
         }
 
-        console.log(data)
-
-        history.push('/home');
     }
 
 

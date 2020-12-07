@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
 import { Container, TextField }  from '../../components/index'
 
+import api from '../../services/api'
+
 import {
     FormStyled,
     DivStyled,
@@ -24,22 +26,20 @@ export default function Register() {
         e.preventDefault();
 
         const data = {
-            name,
-            email,
-            password
+            "name": name,
+            "username": email,
+            "password": password
         };
 
-        // try {
-        //     const response = await api.post('signup', data);
-        //     console.log(response)    
-        // } catch (err) {
-        //     alert('Erro no cadastro, tente novamente');
-        // }
+        try {
+            console.log(data)
+            const response = await api.post('sign-up', data);
+            console.log(response)    
 
-        console.log(data)
-
-
-        history.push('/login');
+            history.push('/');
+        } catch (err) {
+            alert('Erro no cadastro, tente novamente');
+        }
     }
 
     return (

@@ -18,9 +18,13 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 
-@RequiredArgsConstructor
 public class JwtUsernameAndPasswordAuthenticationFilter  extends UsernamePasswordAuthenticationFilter {
-    private final AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
+
+    public JwtUsernameAndPasswordAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+        setFilterProcessesUrl("/sign-in");
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {

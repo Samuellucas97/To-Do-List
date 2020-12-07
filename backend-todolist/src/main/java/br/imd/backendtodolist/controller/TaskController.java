@@ -31,7 +31,6 @@ public class TaskController {
     @GetMapping(path = "/pending", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Task>> tasksPending() { return ResponseEntity.ok(taskService.tasksPending()); }
 
-    @CrossOrigin("*")
     @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> save(@RequestBody @Valid TaskDTO task) {
         return ResponseEntity.ok(taskService.save(task.toDomain()));

@@ -3,7 +3,7 @@ package br.imd.backendtodolist.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.HttpHeaders;
 
-@ConfigurationProperties(prefix = "application.jwt")
+//@ConfigurationProperties(prefix = "application.jwt")
 public class JwtConfig {
     private String secretKey;
     private String tokenPrefix;
