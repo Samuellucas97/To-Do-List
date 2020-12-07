@@ -1,10 +1,8 @@
 package br.imd.backendtodolist.service;
 
 import br.imd.backendtodolist.exception.ResourceNotFoundException;
-import br.imd.backendtodolist.model.Task;
 import br.imd.backendtodolist.model.UserCustom;
 import br.imd.backendtodolist.repository.UserCustomRepository;
-import br.imd.backendtodolist.security.PasswordConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,13 +24,21 @@ public class UserCustomService implements UserDetailsService {
         return userCustomRepository.save(userCustom);
     }
 
+    public Long findIdByUsername(String username) {
+        return findByUsername(username).getId();
+    }
+
     public UserCustom findById(Long idUserCustom) {
         return userCustomRepository.findById(idUserCustom)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
+        return findByUsername(username);
+    }
+
+    private UserCustom findByUsername(String username) throws UsernameNotFoundException {
         final UserCustom user = userCustomRepository.findByUsername(username);
 
         if (user == null)
