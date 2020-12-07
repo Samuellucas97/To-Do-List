@@ -29,12 +29,12 @@ export default function Register() {
             password
         };
 
-        try {
-            const response = await api.post('signup', data);
-            console.log(response)    
-        } catch (err) {
-            alert('Erro no cadastro, tente novamente');
-        }
+        // try {
+        //     const response = await api.post('signup', data);
+        //     console.log(response)    
+        // } catch (err) {
+        //     alert('Erro no cadastro, tente novamente');
+        // }
 
         console.log(data)
 
