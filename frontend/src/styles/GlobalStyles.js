@@ -18,6 +18,10 @@ a, li, button {
 input {
     /* color: white !important; */
 }
+
+a, li, button {
+    text-decoration: none;
+}
 `
 
 export default globalStyle;
