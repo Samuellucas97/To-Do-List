@@ -22,7 +22,6 @@ public class Task {
     private LocalDate beginDate = null;
     private LocalDate endDate = null;
     private Boolean isConcluded = Boolean.FALSE;
-    private LocalDate updated = null;
 
     @OneToOne
     private UserCustom userCustom;

@@ -4,6 +4,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Container, TextField }  from '../../components/index'
 
 import api from '../../services/api'
+import { login } from "../../services/auth";
 
 import {
     FormStyled,
@@ -33,11 +34,9 @@ export default function Login() {
             const response = await api.post('sign-in', data);
 
             console.log(response)    
-
-            // localStorage.setItem('ongId', id);
-            // localStorage.setItem('ongName', response.data.name);
-
-            history.push('/home');
+			//login(response.data.token);
+            
+            //history.push('/home');
         } catch (err) {
             alert('Erro no cadastro, tente novamente');
         }
