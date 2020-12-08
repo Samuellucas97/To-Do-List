@@ -50,6 +50,11 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    public List<Task> taskThatWillExpire(Long idUserCustom) {
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        return taskRepository.findTaskByUserCustomAndIsConcludedIsFalseAndBeginDateBeforeAndEndDateGreaterThanEqualAndEndDateIsLessThanEqual(userCustomById, LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(5));
+    }
+
     public List<Task> tasksConcluded(Long idUserCustom) {
         UserCustom userCustomById = userCustomService.findById(idUserCustom);
         return taskRepository.findTaskByUserCustomAndIsConcludedIsTrue(userCustomById);
@@ -62,7 +67,7 @@ public class TaskService {
 
     public List<Task> tasksPending(Long idUserCustom) {
         UserCustom userCustomById = userCustomService.findById(idUserCustom);
-        return taskRepository.findTaskByUserCustomAndEndDateBeforeAndIsConcludedIsFalse(userCustomById, LocalDate.now());
+        return taskRepository.findTaskByUserCustomAndBeginDateBeforeAndIsConcludedIsFalse(userCustomById, LocalDate.now());
     }
 
 

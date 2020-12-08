@@ -11,6 +11,7 @@ import FeaturedTask from './FeaturedTask'
 
 import CardCustom from './CardCustom'
 import CardFinished from './CardFinished'
+import CardNotification from './CardNotification'
 
 export {
     Card,
@@ -25,5 +26,6 @@ export {
     TextField,
     FeaturedTask,
     CardCustom,
-    CardFinished
+    CardFinished,
+    CardNotification
 }

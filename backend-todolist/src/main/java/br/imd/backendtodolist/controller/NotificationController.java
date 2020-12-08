@@ -14,7 +14,7 @@ import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
-@RequestMapping("notification")
+@RequestMapping("notifications")
 @RequiredArgsConstructor
 public class NotificationController {
     private final NotificationService notificationService;

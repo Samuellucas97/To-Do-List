@@ -12,6 +12,8 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findAllByUserCustom(UserCustom userCustom);
     Task findByUserCustomAndId(UserCustom userCustom, Long idTask);
     List<Task> findTaskByUserCustomAndIsConcludedIsTrue(UserCustom userCustom);
-    List<Task> findTaskByUserCustomAndEndDateBeforeAndIsConcludedIsFalse(UserCustom userCustom, LocalDate date);
+    List<Task> findTaskByUserCustomAndBeginDateBeforeAndIsConcludedIsFalse(UserCustom userCustom, LocalDate date);
     List<Task> findTaskByUserCustomAndBeginDateAfterAndIsConcludedIsFalse(UserCustom userCustom, LocalDate date);
+    List<Task> findTaskByUserCustomAndIsConcludedIsFalseAndBeginDateBeforeAndEndDateGreaterThanEqualAndEndDateIsLessThanEqual(UserCustom userCustom, LocalDate dateAcual, LocalDate dateActual, LocalDate actualPlusFive);
+
 }
