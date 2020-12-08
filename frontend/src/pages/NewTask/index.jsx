@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
 import { Container, TextField }  from '../../components/index'
 
 import DefaultLayout from '../../layouts/DefaultLayout'
 
+import api from '../../services/api'
 
 import Paper from '@material-ui/core/Paper';
 
@@ -20,6 +22,9 @@ export default function NewTask() {
     // const [selectedStartDate, setSelectedStartDate] = useState(new Date())
     // const [selectedFinishDate, setSelectFinishDate] = useState(new Date())  
 
+    const idUser = localStorage.getItem('idUser')
+
+    const history = useHistory();
 
     async function handleNewTask(e) {
         e.preventDefault();
@@ -29,7 +34,17 @@ export default function NewTask() {
             description
         }
 
-        console.log(data)
+        
+        try {
+            await api.post(`/tasks/${idUser}`, data);
+            
+            alert('Tarefa cadastrada com sucesso!')
+
+            history.push('/home');
+            
+        } catch (err) {
+            alert('Erro no cadastro, tente novamente');
+        }
     }
 
 

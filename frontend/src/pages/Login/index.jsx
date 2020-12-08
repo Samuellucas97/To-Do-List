@@ -32,11 +32,14 @@ export default function Login() {
         try {
             let response = await api.post('sign-in', data);
 
-           login(response.headers.authorization);
+            login(response.headers.authorization);
             
             response = await api.get(`/users/${email}`);
             
+            localStorage.setItem('idUser', response);
+
             history.push('/home');
+            
         } catch (err) {
             alert('Erro no cadastro, tente novamente');
         }
