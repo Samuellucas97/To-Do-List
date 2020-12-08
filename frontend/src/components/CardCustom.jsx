@@ -11,7 +11,7 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-// import { white } from '@material-ui/core/colors';
+import api from '../services/api'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,16 +42,52 @@ const useStyles = makeStyles((theme) => ({
 export default function CardCustom(props) {
     const classes = useStyles();
 
-    const { id,  title, description, finishDate } = props.task
+    const { id,  title, description, beginDate, endDate } = props.task
+
+    const idUserCustom = props.idUserCustom
+    
+    const pathRequest = props.path
+
+    async function handleRemoveTask(e) {
+        e.preventDefault();
+        try {
+            await api.delete(`tasks/${id}`)
+            alert('Evento removido')
+            document.location.reload()
+            
+        } catch (err) {
+            alert('Erro no cadastro, tente novamente');
+        }
+    }
+
+    async function handleFinishTask(e) {
+        e.preventDefault();
+
+        const data = {
+            "title": title,
+            "description": description, 
+            "beginDate": beginDate,
+            "endDate": endDate,
+            "idUserCustom": idUserCustom
+        }
+
+        try {
+            await api.post(`/tasks`, data);
+            alert('Tarefa cadastrada com sucesso!')
+            
+        } catch (err) {
+            alert('Erro no cadastro, tente novamente');
+        }
+    }
 
     return (
         <Card className={classes.root}>
             <CardHeader
                 title={title}
-                subheader={`Prazo: ${finishDate}`}
+                subheader={`${beginDate} - ${endDate}`}
             />
             <CardActions disableSpacing>
-            <IconButton aria-label="delete" onClick={() => console.log(`Removido ${id}`)} >
+            <IconButton aria-label="delete" onClick={(e) => handleRemoveTask(e)} >
                 <DeleteIcon />
             </IconButton>
 
