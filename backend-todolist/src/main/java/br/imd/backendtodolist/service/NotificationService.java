@@ -3,7 +3,6 @@ package br.imd.backendtodolist.service;
 import br.imd.backendtodolist.model.Notification;
 import br.imd.backendtodolist.model.Task;
 import br.imd.backendtodolist.model.UserCustom;
-import br.imd.backendtodolist.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
 @Service
 @RequiredArgsConstructor
 public class NotificationService {
-    private final NotificationRepository notificationRepository;
     private final UserCustomService userCustomService;
     private final TaskService taskService;
 
