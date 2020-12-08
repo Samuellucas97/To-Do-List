@@ -27,7 +27,7 @@ export default function PendingsTasks() {
             <TitleStyled>Tarefas pendentes</TitleStyled>
             <Grid container  style={{justifyContent: 'space-around'}} >
                 {tasksPending.map(task =>(
-                  <CardCustom key={task.id}  task={task} history={history} path={"/tasks/pendings/"} idUserCustom={idUser} />                
+                  <CardCustom key={task.id} task={task} history={history} path={"/tasks/pendings/"} idUserCustom={idUser} />                
                 ))}
             </Grid>
         </DefaultLayout>

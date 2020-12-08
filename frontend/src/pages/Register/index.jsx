@@ -25,20 +25,23 @@ export default function Register() {
     async function handleRegister(e) {
         e.preventDefault();
 
-        const data = {
-            "name": name,
-            "username": email,
-            "password": password
-        };
+        if (password === copassword) {
 
-        try {
-            console.log(data)
-            const response = await api.post('sign-up', data);
-            console.log(response)    
+            const data = {
+                "name": name,
+                "username": email,
+                "password": password
+            };
 
-            history.push('/');
-        } catch (err) {
-            alert('Erro no cadastro, tente novamente');
+            try {
+                await api.post('sign-up', data);
+                alert('Cadastro efetuado com sucesso!');
+                history.push('/');
+            } catch (err) {
+                alert('Erro no cadastro, tente novamente');
+            }
+        } else {
+            alert('Senhas diferentes!')
         }
     }
 

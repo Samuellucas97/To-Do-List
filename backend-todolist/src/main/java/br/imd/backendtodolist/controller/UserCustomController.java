@@ -33,9 +33,11 @@ public class UserCustomController {
         return ResponseEntity.ok(userCustomService.findById(id));
     }
 
-    @PutMapping(path = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> update(@RequestBody @Valid UserCustomDTO userCustom) {
-        userCustomService.update(userCustom.toDomain());
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PutMapping(path = "/users/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> update(
+        @PathVariable("id") Long id,
+        @RequestBody @Valid UserCustomDTO userCustom) {
+            userCustomService.update(userCustom.toDomain(), id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -25,8 +25,11 @@ public class UserCustomService implements UserDetailsService {
         return userCustomRepository.save(userCustom);
     }
 
-
-    public void update(UserCustom userCustom) {
+    @Transactional
+    public void update(UserCustom userCustom, Long id) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
+        userCustom.setPassword(bCryptPasswordEncoder.encode(userCustom.getPassword()) );
+        userCustom.setId(id);
         userCustomRepository.save(userCustom);
     }
 

@@ -20,4 +20,6 @@ public class Notification {
 
     @OneToOne
     private UserCustom userCustom;
+    @OneToOne
+    private Task task;
 }

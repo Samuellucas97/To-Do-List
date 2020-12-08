@@ -41,7 +41,7 @@ export default function Login() {
             history.push('/home');
             
         } catch (err) {
-            alert('Erro no cadastro, tente novamente');
+            alert('Erro no acesso! Verifique o email ou a senha e tente novamente');
         }
 
     }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
 import DefaultLayout from  '../../layouts/DefaultLayout'
 import PersonIcon from '@material-ui/icons/Person'
@@ -11,24 +11,48 @@ import {
     TitleStyled,
     SubmitButtonStyled } from './style'
 
+import api from '../../services/api'
+
 import Paper from '@material-ui/core/Paper';
 
 export default function MyDatas() {
-    const [name, setName] = useState('Samuel Lucas de Moura Ferino')
-    const [email, setEmail] = useState('samuel1797@gmail.com')
-    const [password, setPassword] = useState('muka123')
-    const [copassword, setCopassword] = useState('muka123')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [copassword, setCopassword] = useState('')
+
+    const idUser = localStorage.getItem('idUser')
+
+    useEffect(() => { 
+        api.get(`/user/${idUser}`)
+        .then(response => {
+            setName(response.data.name);
+            setEmail(response.data.username);
+        })
+    }, [idUser]);
 
     async function handleUpdateMyDatas(e) {
         e.preventDefault();
 
-        const data = {
-            name,
-            email,
-            password
-        }
+        if (password === copassword) {
+            const data = {
+                "name": name,
+                "username": email,
+                "password": password
+            }
 
-        console.log(data)
+            try {
+                await api.put(`/users/${idUser}`, data);
+                
+                alert('Dados atualizados com sucesso!')
+                
+            } catch (err) {
+                alert('Erro no cadastro, tente novamente');
+            }
+        }
+        else {
+            alert('As senhas não são compatíveis!')
+        }
     }
 
     return (
@@ -70,6 +94,7 @@ export default function MyDatas() {
                             color="secondary"
                             id="email"
                             label="Email"
+                            disabled
                             name="email"
                             autoComplete="email"
                         />
@@ -82,7 +107,7 @@ export default function MyDatas() {
                             required
                             fullWidth
                             name="password"
-                            label="Senha"
+                            label="Nova senha"
                             type="password"
                             id="password"
                             autoComplete="current-password"
@@ -97,7 +122,7 @@ export default function MyDatas() {
                             required
                             fullWidth
                             name="copassword"
-                            label="Repetir senha"
+                            label="Repetir nova senha"
                             type="password"
                             id="copassword"
                             autoComplete="current-copassword"

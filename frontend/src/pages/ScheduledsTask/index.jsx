@@ -27,7 +27,7 @@ export default function ScheduledsTasks() {
             <TitleStyled>Tarefas agendadas</TitleStyled>
             <Grid container  style={{justifyContent: 'space-around'}} >
                 {tasksScheduler.map(task =>(
-                  <CardCustom key={task.id}  task={task} />                
+                  <CardCustom key={task.id}  task={task} history={history} path={"/tasks/scheduleds/"} idUserCustom={idUser} />                
                 ))}
             </Grid>
         </DefaultLayout>
