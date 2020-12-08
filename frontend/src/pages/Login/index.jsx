@@ -36,7 +36,7 @@ export default function Login() {
             
             response = await api.get(`/users/${email}`);
             
-            localStorage.setItem('idUser', response);
+            localStorage.setItem('idUser', response.data);
 
             history.push('/home');
             
