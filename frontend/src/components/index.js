@@ -10,6 +10,7 @@ import TextField from './TextField'
 import FeaturedTask from './FeaturedTask'
 
 import CardCustom from './CardCustom'
+import CardFinished from './CardFinished'
 
 export {
     Card,
@@ -23,5 +24,6 @@ export {
     Avatar,
     TextField,
     FeaturedTask,
-    CardCustom
+    CardCustom,
+    CardFinished
 }
