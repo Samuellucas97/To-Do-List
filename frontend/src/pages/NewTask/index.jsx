@@ -140,6 +140,7 @@ export default function NewTask() {
                                     format="dd/MM/yyyy"
                                     margin="normal"
                                     color="secondary"
+                                    minDate={selectedStartDate}
                                     id="date-finish"
                                     label="Fim da tarefa"
                                     value={selectedFinishDate}

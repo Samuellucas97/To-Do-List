@@ -40,7 +40,6 @@ export default function PendingsTaskEdit(props) {
     
     const history = useHistory();
 
-
     useEffect(() => { 
         api.get(`tasks/${idUser}/${idTask}`)
         .then(response => {
@@ -68,7 +67,7 @@ export default function PendingsTaskEdit(props) {
         try {
             await api.put(`/tasks/${idTask}`, data);
             
-            alert('Tarefa cadastrada com sucesso!')
+            alert('Tarefa atualizada com sucesso!')
 
             history.push('/tasks/pendings');
             
@@ -76,8 +75,8 @@ export default function PendingsTaskEdit(props) {
             alert('Erro no cadastro, tente novamente');
         }
     }
+    
     return (
-
         <DefaultLayout>
             <Container component="main" maxWidth="md">
                 <Paper elevation={3} style={{ paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }}>    
@@ -149,6 +148,7 @@ export default function PendingsTaskEdit(props) {
                                 <KeyboardDatePicker
                                     disableToolbar
                                     fullWidth
+                                    minDate={selectedStartDate}
                                     required
                                     format="dd/MM/yyyy"
                                     margin="normal"
