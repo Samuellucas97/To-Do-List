@@ -8,8 +8,8 @@ import Login from './pages/Login/index'
 import Register from './pages/Register/index'
 import Profile from './pages/Profile/index'
 import NotFound from './pages/NotFound/index'
+import Notifications from './pages/Notifications/index'
 import FinishedsTask from './pages/FinishedsTask/index'
-import FinishedsTaskEdit from './pages/FinishedsTask/edit'
 import PendingsTask from './pages/PendingsTask/index'
 import PendingsTaskEdit from './pages/PendingsTask/edit'
 import ScheduledsTask from './pages/ScheduledsTask/index'
@@ -26,13 +26,13 @@ const Routes = () => (
             <Route path="/register" exact component={Register}/>
             <Route path="/home"  exact component={Home} />
             <Route path="/profile" exact component={Profile} />
+            <Route path="/notifications" exact component={Notifications} />
             <Route path="/tasks/new" exact component={NewTask} />
             <Route path="/tasks/pendings" exact component={PendingsTask} />
-            <Route path="/tasks/pendings/:taskId" exact component={PendingsTaskEdit} />
+            <Route path="/tasks/pendings/:idTask" exact component={PendingsTaskEdit} />
             <Route path="/tasks/finisheds" exact component={FinishedsTask} />
-            <Route path="/tasks/finisheds/:taskId" exact component={FinishedsTaskEdit} />
             <Route path="/tasks/scheduleds" exact component={ScheduledsTask} />
-            <Route path="/tasks/scheduleds/:taskId" exact component={ScheduledsTaskEdit} />
+            <Route path="/tasks/scheduleds/:idTask" exact component={ScheduledsTaskEdit} />
             <Route component={NotFound}/>
         </Switch>
         <GlobalStyle />

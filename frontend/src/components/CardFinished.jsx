@@ -8,9 +8,7 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
 
 import api from '../services/api'
 
@@ -40,16 +38,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function CardCustom(props) {
+export default function CardFinished(props) {
     const classes = useStyles();
 
     const { id,  title, description, beginDate, endDate } = props.task
-
-    const idUserCustom = props.idUserCustom
-
-    const history = props.history
-    
-    const pathRequest = props.path
 
     async function handleRemoveTask(e) {
         e.preventDefault();
@@ -63,31 +55,6 @@ export default function CardCustom(props) {
         }
     }
 
-    async function handleFinishTask(e) {
-        e.preventDefault();
-
-        const data = {
-            "title": title,
-            "description": description, 
-            "beginDate": beginDate,
-            "endDate": endDate,
-            "idUserCustom": idUserCustom,
-            "isConcluded": true
-        }
-
-        try {
-            await api.put(`/tasks/${id}`, data);
-            alert('Tarefa concluída com sucesso!')
-            document.location.reload()
-            
-        } catch (err) {
-            alert('Erro na edição, tente novamente');
-        }
-    }
-    function handleEditTask() {
-        history.push(`${pathRequest}${id}`)
-    }
-
     return (
         <Card className={classes.root}>
             <CardHeader
@@ -97,13 +64,6 @@ export default function CardCustom(props) {
             <CardActions disableSpacing>
             <IconButton aria-label="delete" onClick={e => handleRemoveTask(e)} >
                 <DeleteIcon />
-            </IconButton>
-
-            <IconButton aria-label="edit" onClick={() => handleEditTask()}>
-                <EditIcon />
-            </IconButton>
-            <IconButton aria-label="checkBox" onClick={e => handleFinishTask(e)}>
-                <CheckBoxIcon />
             </IconButton>
 
             </CardActions>

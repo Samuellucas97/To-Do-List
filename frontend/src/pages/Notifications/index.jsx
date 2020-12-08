@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
 
 import DefaultLayout from '../../layouts/DefaultLayout'
-import { Grid, CardFinished } from '../../components/index'
+import { Grid, CardNotification } from '../../components/index'
 import { TitleStyled } from './style'
 
 import api from '../../services/api'
 
-export default function FinishedsTasks() {
+export default function Notifications() {
 
-    const [tasksFinished, setTasksFinished] = useState([]);
+    const [notifications, setNotifications] = useState([]);
 
     const idUser = localStorage.getItem('idUser')
 
     useEffect(() => { 
-        api.get(`tasks/concluded/${idUser}`)
+        api.get(`notifications/${idUser}`)
         .then(response => {
-            setTasksFinished(response.data);
+            setNotifications(response.data);
         })
     }, [idUser]);
 
     return ( 
         <DefaultLayout>    
-            <TitleStyled>Tarefas concluídas</TitleStyled>    
+            <TitleStyled>Notificações</TitleStyled>    
             <Grid container style={{justifyContent: 'space-around'}} >
-                {tasksFinished.map(task =>(
-                  <CardFinished key={task.id}  task={task} />                
+                {notifications.map(notification =>(
+                  <CardNotification key={notification.id}  notification={notification} />                
                 ))}
             </Grid>
         </DefaultLayout>

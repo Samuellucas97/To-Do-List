@@ -26,6 +26,7 @@ import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 
 import { useHistory } from 'react-router-dom';
+import { logout } from "../services/auth";
 
 const drawerWidth = 240;
 
@@ -141,7 +142,10 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
       <List>
-        <ListItem button key="Sair" onClick={() => history.push('/')}>
+        <ListItem button key="Sair" onClick={() => { 
+          logout()
+          history.push('/')
+      }}>
           <ListItemIcon>
             {" "} 
             <ExitToAppIcon />{" "}

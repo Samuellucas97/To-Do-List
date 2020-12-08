@@ -1,16 +1,15 @@
 package br.imd.backendtodolist.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @Entity
 public class Notification {
@@ -20,4 +19,9 @@ public class Notification {
     private String title;
     private String description;
     private Boolean isRead;
+
+    @OneToOne
+    private UserCustom userCustom;
+    @OneToOne
+    private Task task;
 }

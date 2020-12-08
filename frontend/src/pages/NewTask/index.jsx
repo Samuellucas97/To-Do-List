@@ -1,9 +1,22 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
 import { Container, TextField }  from '../../components/index'
 
+import 'date-fns';
+
+import Grid from '@material-ui/core/Grid';
+
+import DateFnsUtils from '@date-io/date-fns';
+
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 import DefaultLayout from '../../layouts/DefaultLayout'
 
+import api from '../../services/api'
 
 import Paper from '@material-ui/core/Paper';
 
@@ -17,19 +30,36 @@ import {
 export default function NewTask() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    // const [selectedStartDate, setSelectedStartDate] = useState(new Date())
-    // const [selectedFinishDate, setSelectFinishDate] = useState(new Date())  
+    const [selectedStartDate, setSelectedStartDate] = useState(new Date(Date.now()))
+    const [selectedFinishDate, setSelectedFinishDate] = useState(new Date(Date.now()))  
 
+    const idUser = localStorage.getItem('idUser')
+
+    const history = useHistory();
 
     async function handleNewTask(e) {
         e.preventDefault();
 
         const data = {
-            title,
-            description
+            "title": title,
+            "description": description, 
+            "beginDate": selectedStartDate,
+            "endDate": selectedFinishDate,
+            "idUserCustom": idUser,
+            "isConcluded": false
         }
 
-        console.log(data)
+        
+        try {
+            await api.post(`/tasks`, data);
+            
+            alert('Tarefa cadastrada com sucesso!')
+
+            history.push('/home');
+            
+        } catch (err) {
+            alert('Erro no cadastro, tente novamente');
+        }
     }
 
 
@@ -79,10 +109,50 @@ export default function NewTask() {
                             label="Descrição"
                             type="text"
                             id="description"
-
-                    
                             autoComplete="description"
                         />
+
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <Grid container justify="space-around">
+                            <Grid item>                            
+                                <KeyboardDatePicker
+                                    disableToolbar
+                                    fullWidth
+                                    required
+                                    variant="outlined"
+                                    color="secondary"
+                                    format="dd/MM/yyyy"
+                                    margin="normal"
+                                    id="date-start"
+                                    label="Início da tarefa"
+                                    value={selectedStartDate}
+                                    onChange={date => setSelectedStartDate(date)}
+                                    KeyboardButtonProps = {{
+                                        'aria-label': 'change date',
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <KeyboardDatePicker
+                                    disableToolbar
+                                    fullWidth
+                                    required
+                                    format="dd/MM/yyyy"
+                                    margin="normal"
+                                    color="secondary"
+                                    minDate={selectedStartDate}
+                                    id="date-finish"
+                                    label="Fim da tarefa"
+                                    value={selectedFinishDate}
+                                    onChange={date => setSelectedFinishDate(date)}
+                                    KeyboardButtonProps = {{
+                                    'aria-label': 'change date',
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+                        </MuiPickersUtilsProvider>
+
                         <SubmitButtonStyled
                             type="submit"
                             fullWidth
