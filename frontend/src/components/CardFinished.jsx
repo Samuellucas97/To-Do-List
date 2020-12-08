@@ -45,12 +45,6 @@ export default function CardCustom(props) {
 
     const { id,  title, description, beginDate, endDate } = props.task
 
-    const idUserCustom = props.idUserCustom
-
-    const history = props.history
-    
-    const pathRequest = props.path
-
     async function handleRemoveTask(e) {
         e.preventDefault();
         try {
@@ -63,31 +57,6 @@ export default function CardCustom(props) {
         }
     }
 
-    async function handleFinishTask(e) {
-        e.preventDefault();
-
-        const data = {
-            "title": title,
-            "description": description, 
-            "beginDate": beginDate,
-            "endDate": endDate,
-            "idUserCustom": idUserCustom,
-            "isConcluded": true
-        }
-
-        try {
-            await api.put(`/tasks/${id}`, data);
-            alert('Tarefa concluída com sucesso!')
-            document.location.reload()
-            
-        } catch (err) {
-            alert('Erro na edição, tente novamente');
-        }
-    }
-    function handleEditTask() {
-        history.push(`${pathRequest}${id}`)
-    }
-
     return (
         <Card className={classes.root}>
             <CardHeader
@@ -97,13 +66,6 @@ export default function CardCustom(props) {
             <CardActions disableSpacing>
             <IconButton aria-label="delete" onClick={e => handleRemoveTask(e)} >
                 <DeleteIcon />
-            </IconButton>
-
-            <IconButton aria-label="edit" onClick={() => handleEditTask()}>
-                <EditIcon />
-            </IconButton>
-            <IconButton aria-label="checkBox" onClick={e => handleFinishTask(e)}>
-                <CheckBoxIcon />
             </IconButton>
 
             </CardActions>

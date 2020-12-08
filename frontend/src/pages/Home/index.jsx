@@ -2,8 +2,7 @@ import DefaultLayout from '../../layouts/DefaultLayout'
 
 import {ContainerStyled, 
         TitleStyled, 
-        SubtitleStyled, 
-        ButtonStyled } from './style'
+        SubtitleStyled } from './style'
 
 export default function Home() {
     return (  
@@ -15,7 +14,14 @@ export default function Home() {
                 <SubtitleStyled variant="subtitle1">
                     Uma simples aplicação de gerenciamento de lista de tarefas
                 </SubtitleStyled>
-                <ButtonStyled to="/login">ACESSAR</ButtonStyled>          
+                <SubtitleStyled variant="subtitle1">
+                    Funcionalidades do sistema
+                    <ul>
+                        <li>Gerenciamento de tarefas pendentes</li>
+                        <li>Gerenciamento de tarefas agendadas</li>
+                        <li>Gerenciamento de tarefas concluídas</li>
+                    </ul>
+                </SubtitleStyled>
             </ContainerStyled>
         </DefaultLayout>
     );

@@ -18,10 +18,17 @@ import java.util.Optional;
 public class TaskService {
     private final TaskRepository taskRepository;
     private final UserCustomRepository userCustomRepository;
+    private final UserCustomService userCustomService;
 
     public List<Task> listAll(Long idUserCustom) {
-        final Optional<UserCustom> userCustomById = userCustomRepository.findById(idUserCustom);
-        return taskRepository.findAllByUserCustom(userCustomById.get());
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        return taskRepository.findAllByUserCustom(userCustomById);
+    }
+
+    public Task findById(Long idUserCustom, Long idTask) {
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        return taskRepository.findByUserCustomAndId(userCustomById, idTask);
+
     }
 
     @Transactional
@@ -44,25 +51,25 @@ public class TaskService {
     }
 
     public List<Task> tasksConcluded(Long idUserCustom) {
-        final Optional<UserCustom> userCustomById = userCustomRepository.findById(idUserCustom);
-        return taskRepository.findTaskByUserCustomAndIsConcludedIsTrue(userCustomById.get());
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        return taskRepository.findTaskByUserCustomAndIsConcludedIsTrue(userCustomById);
     }
 
     public List<Task> tasksScheduler(Long idUserCustom) {
-        final Optional<UserCustom> userCustomById = userCustomRepository.findById(idUserCustom);
-        return taskRepository.findTaskByUserCustomAndBeginDateAfterAndIsConcludedIsFalse(userCustomById.get(), LocalDate.now());
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        return taskRepository.findTaskByUserCustomAndBeginDateAfterAndIsConcludedIsFalse(userCustomById, LocalDate.now());
     }
 
     public List<Task> tasksPending(Long idUserCustom) {
-        final Optional<UserCustom> userCustomById = userCustomRepository.findById(idUserCustom);
-        return taskRepository.findTaskByUserCustomAndEndDateBeforeAndIsConcludedIsFalse(userCustomById.get(), LocalDate.now());
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        return taskRepository.findTaskByUserCustomAndEndDateBeforeAndIsConcludedIsFalse(userCustomById, LocalDate.now());
     }
 
 
     private Task updatedUserCustomFromTask(Task task) {
         Long idUserCustom = task.getUserCustom().getId();
-        final Optional<UserCustom> userCustomById = userCustomRepository.findById(idUserCustom);
-        task.setUserCustom(userCustomById.get());
+        UserCustom userCustomById = userCustomService.findById(idUserCustom);
+        task.setUserCustom(userCustomById);
         return task;
     }
 

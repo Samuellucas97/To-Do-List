@@ -16,6 +16,8 @@ public class TaskDTO {
     private final String description;
     private final LocalDate beginDate;
     private final LocalDate endDate;
+    private Boolean isConcluded;
+
     @NotNull(message = "Please provide a user id")
     private final Long idUserCustom;
 
@@ -25,7 +27,7 @@ public class TaskDTO {
                 .description(description)
                 .beginDate(beginDate)
                 .endDate(endDate)
-                .isConcluded(Boolean.FALSE)
+                .isConcluded(isConcluded)
                 .userCustom(UserCustom.builder()
                                     .id(idUserCustom)
                                     .username(null)

@@ -27,6 +27,14 @@ public class TaskController {
         return ResponseEntity.ok(taskService.listAll(idUserCustom));
     }
 
+    @GetMapping(path = "/{idUserCustom}/{idTask}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Task> findById(@PathVariable("idUserCustom")
+        @Min(value = 0, message = "The id atribute has a value of 0 as the lowest value") Long idUserCustom,
+        @PathVariable("idTask")
+        @Min(value = 0, message = "The id atribute has a value of 0 as the lowest value") Long idTask) {
+        return ResponseEntity.ok(taskService.findById(idUserCustom, idTask));
+    }
+
     @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> save(@RequestBody @Valid TaskDTO task) {
         return ResponseEntity.ok(taskService.save(task.toDomain()));
@@ -39,11 +47,15 @@ public class TaskController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> update(@RequestBody @Valid TaskDTO task) {
-        taskService.update(task.toDomain());
+    @PutMapping(path = "/{idTask}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> update(@PathVariable("idTask") Long idTask,
+                                       @RequestBody @Valid TaskDTO task) {
+        Task taskUpdated = task.toDomain();
+        taskUpdated.setId(idTask);
+        taskService.update(taskUpdated);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @GetMapping(path = "/concluded/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Task>> tasksConcluded(@PathVariable("id")
         @Min(value = 0, message = "The id atribute has a value of 0 as the lowest value") Long idUserCustom) {

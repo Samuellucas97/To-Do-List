@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findAllByUserCustom(UserCustom userCustom);
+    Task findByUserCustomAndId(UserCustom userCustom, Long idTask);
     List<Task> findTaskByUserCustomAndIsConcludedIsTrue(UserCustom userCustom);
     List<Task> findTaskByUserCustomAndEndDateBeforeAndIsConcludedIsFalse(UserCustom userCustom, LocalDate date);
     List<Task> findTaskByUserCustomAndBeginDateAfterAndIsConcludedIsFalse(UserCustom userCustom, LocalDate date);

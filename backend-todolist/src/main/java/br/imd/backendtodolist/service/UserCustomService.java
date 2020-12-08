@@ -1,6 +1,7 @@
 package br.imd.backendtodolist.service;
 
 import br.imd.backendtodolist.exception.ResourceNotFoundException;
+import br.imd.backendtodolist.model.Task;
 import br.imd.backendtodolist.model.UserCustom;
 import br.imd.backendtodolist.repository.UserCustomRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class UserCustomService implements UserDetailsService {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
         userCustom.setPassword(bCryptPasswordEncoder.encode(userCustom.getPassword()) );
         return userCustomRepository.save(userCustom);
+    }
+
+
+    public void update(UserCustom userCustom) {
+        userCustomRepository.save(userCustom);
     }
 
     public Long findIdByUsername(String username) {

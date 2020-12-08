@@ -45,7 +45,8 @@ export default function NewTask() {
             "description": description, 
             "beginDate": selectedStartDate,
             "endDate": selectedFinishDate,
-            "idUserCustom": idUser
+            "idUserCustom": idUser,
+            "isConcluded": false
         }
 
         
